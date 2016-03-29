@@ -3,12 +3,10 @@ public:
     bool containsDuplicate(vector<int>& nums) {
         int n = nums.size();
         set<int> s;
+        pair<set<int>::iterator, bool> ret;
         for (int i = 0; i < n; i++)
-        {
-            if (s.find(nums[i]) != s.end())
+            if (!((ret = s.insert(nums[i])).second))
                 return true;
-            s.insert(nums[i]);
-        }
         return false;
     }
 };
