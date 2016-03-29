@@ -27,22 +27,12 @@ public:
             slow = slow->next;
         
         while (slow != NULL) {
-            if (reverse->val != slow->val) {
-                flag = false;
-                break;   
+            if (flag && reverse->val != slow->val) {
+                flag = false; 
             }
             ListNode *temp = reverse;
             reverse = reverse->next;
-            temp->next = head;
-            head = temp;
-            
             slow = slow->next;
-        }
-        
-        //不是回文的，恢复剩余结点
-        while (reverse != NULL) {
-            ListNode *temp = reverse;
-            reverse = reverse->next;
             temp->next = head;
             head = temp;
         }
